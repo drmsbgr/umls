@@ -1,0 +1,59 @@
+@startuml Gate UML
+
+abstract class BaseLogicGate{
+    +OnOutputChange:Action<bool>
+    {abstract}+CalculateOutput():bool
+    {abstract}+HasThisInput(inputGate:InputGate):bool
+    {abstract}+GetExpression():string
+}
+
+abstract class SingleInputGate extends BaseLogicGate{
+    +input:InputGate
+    +HasThisInput(inputGate:InputGate):bool
+}
+
+class NotGate extends SingleInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+class SplitterGate extends SingleInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+abstract class BiInputGate extends BaseLogicGate{
+    +input0:InputGate
+    +input1:InputGate
+    +HasThisInput(inputGate:InputGate):bool
+}
+
+class AndGate extends BiInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+class BiconditionalGate extends BiInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+class ImplactionGate extends BiInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+class OrGate extends BiInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+class XorGate extends BiInputGate{
+    +CalculateOutput():bool
+    +GetExpression():string
+}
+
+hide empty members
+
+@enduml
+
